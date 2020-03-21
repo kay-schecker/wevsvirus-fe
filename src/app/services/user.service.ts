@@ -37,7 +37,7 @@ export class UserService {
         }
 
         return this.http
-            .post<IQuestionnaire>(this.baseUrl, this.user)
+            .post<User>(this.baseUrl, this.user)
             .toPromise()
             .then(() => user);
     }
