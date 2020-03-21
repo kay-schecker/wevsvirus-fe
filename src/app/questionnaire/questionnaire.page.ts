@@ -13,7 +13,7 @@ export class QuestionnairePage implements OnInit {
     private state: IQuestionnaire;
 
     @Input()
-    public mode: 'mood' | 'health' = 'health';
+    public moode = true;
 
     constructor(
         private readonly userService: UserService,

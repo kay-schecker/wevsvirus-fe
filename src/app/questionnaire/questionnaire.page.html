@@ -5,8 +5,18 @@
 </ion-header>
 
 <ion-content>
-    <ng-container [ngSwitch]="mode">
-        <quest-form *ngSwitchCase="'mood'" (onChange)="onMoodResponse($event)"></quest-form>
-        <quest-health *ngSwitchCase="'health'" (onChange)="onHealthResponse($event)"></quest-health>
+
+    <ion-grid>
+        <ion-col size="12">
+            <ion-item>
+                <ion-label>Mood enabled:</ion-label>
+                <ion-toggle color="primary" [(ngModel)]="moode" [value]="'mood'"></ion-toggle>
+            </ion-item>
+        </ion-col>
+    </ion-grid>
+
+    <ng-container [ngSwitch]="moode">
+        <quest-form *ngSwitchCase="true" (onChange)="onMoodResponse($event)"></quest-form>
+        <quest-health *ngSwitchDefault="false" (onChange)="onHealthResponse($event)"></quest-health>
     </ng-container>
 </ion-content>
