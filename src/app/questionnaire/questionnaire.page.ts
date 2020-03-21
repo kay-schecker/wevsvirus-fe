@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {IQuestionnaire, QuestionnaireService} from '../services/questionnaire.service';
 import {UserService} from '../services/user.service';
 import {MoodQuestion} from './form/form.component';
+import {HealthQuestion} from './health/health.component';
 
 @Component({
     selector: 'app-questionnaire',
@@ -10,11 +11,14 @@ import {MoodQuestion} from './form/form.component';
 })
 export class QuestionnairePage implements OnInit {
 
-    private state: IQuestionnaire
+    private state: IQuestionnaire;
+
+    @Input()
+    public mode: 'mood' | 'health' = 'health';
 
     constructor(
         private readonly userService: UserService,
-        private readonly questService: QuestionnaireService
+        private readonly questService: QuestionnaireService,
     ) {
     }
 
@@ -24,16 +28,25 @@ export class QuestionnairePage implements OnInit {
             responseDate: new Date().toISOString().substring(0, 10),
             moodResponses: [],
             healthResponses: [],
-        }
+        };
     }
 
     async onMoodResponse(event: MoodQuestion[]) {
         this.state.moodResponses = event.map(({id, value}) => ({
             questionId: id,
             response: value,
-        }))
+        }));
 
-        await this.questService.save(this.state)
+        await this.questService.save(this.state);
+    }
+
+    async onHealthResponse(event: HealthQuestion[]) {
+        this.state.healthResponses = event.map(({id, value}) => ({
+            questionId: id,
+            response: value,
+        }));
+
+        await this.questService.save(this.state);
     }
 
 }
