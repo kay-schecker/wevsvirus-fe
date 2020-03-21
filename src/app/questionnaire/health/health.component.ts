@@ -63,7 +63,16 @@ export class QuestHealthComponent {
     @Output()
     public readonly onChange = new EventEmitter<HealthQuestion[]>();
 
-    onRangeChange(id: string, value: HealthQuestion['value']) {
+    onRangeChange(slider, id: string, value: HealthQuestion['value']) {
+
+        const n = new Date(0, 0);
+        n.setMinutes(slider.value as number);
+
+        slider
+            .el.shadowRoot
+            .querySelector('.range-knob-handle .range-pin')
+            .innerHTML = n.toTimeString().slice(0, 5);
+
         this.onChange.emit(this.questions.map(q => {
             if (q.id === id) {
                 q.value = {
@@ -77,10 +86,8 @@ export class QuestHealthComponent {
     }
 
     format(range: IonRange): string {
-        const decimalTimeString = String((range.value as number) / 60);
         const n = new Date(0, 0);
-        n.setSeconds(+decimalTimeString * 60 * 60);
-        n.setMinutes(+decimalTimeString * 60);
+        n.setMinutes(range.value as number);
         return n.toTimeString().slice(0, 5);
     }
 }
