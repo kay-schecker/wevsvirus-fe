@@ -15,36 +15,55 @@ export interface User extends Partial<UserData> {
     id: string
 }
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable({providedIn: 'root'})
 export class UserService {
 
-    baseUrl = 'http://localhost:8080';
+    public user?: User
 
-    public user: User = {
-        id: generate()
-    }
+    private readonly baseUrl = 'http://localhost:8080';
 
     constructor(private http: HttpClient) {
 
-        this.signUp({
+        /*this.signUp({
             gender: 'MALE',
             yearOfBirth: 1988,
             plz: '75321',
             householdSize: 2,
             pet: true,
-        })
+        })*/
     }
 
-    public signUp(data: UserData): Promise<User> {
+    public async new(): Promise<User> {
+        this.user = {
+            id: generate()
+        }
+    }
+
+    public async signUp(data: UserData): Promise<User> {
 
         this.user = {id: this.user?.id, ...data}
 
-        return this.http
+        await this.http
             .post<User>(`${this.baseUrl}/register`, this.user)
             .toPromise()
-            .then(() => this.user);
+
+        if (window.localStorage) {
+            window.localStorage.setItem('user', JSON.stringify(this.user))
+        }
+
+        return this.user
+    }
+
+    public async loadUser(): Promise<User | undefined> {
+        const userJson = window.localStorage.getItem('user')
+
+        if (!userJson) {
+            return
+        }
+
+
+        this.user = JSON.parse(userJson)
+        return this.user
     }
 
 }

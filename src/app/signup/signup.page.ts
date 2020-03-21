@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {IonSlides} from '@ionic/angular';
 import {UserService} from '../services/user.service';
 
@@ -7,11 +7,15 @@ import {UserService} from '../services/user.service';
     templateUrl: './signup.page.html',
     styleUrls: ['./signup.page.scss'],
 })
-export class SignupPage {
+export class SignupPage implements OnInit {
 
     @ViewChild('slider') slider: IonSlides;
 
     constructor(public readonly userService: UserService) {
+    }
+
+    ngOnInit(): void {
+        this.userService.new()
     }
 
     public next(e: Event) {
