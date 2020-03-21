@@ -9,7 +9,8 @@ import {MoodQuestion, QuestionService} from '../../services/question.service';
     styleUrls: ['./form.component.scss'],
 })
 export class QuestFormComponent implements OnInit {
-    public questions: Array<MoodQuestion> = [];
+
+    public questions: MoodQuestion[] = [];
 
     constructor(private readonly questionService: QuestionService) {
     }
