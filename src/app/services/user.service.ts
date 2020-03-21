@@ -24,7 +24,7 @@ export class UserService {
 
     constructor(private http: HttpClient) {
 
-        this.new().then(() => {
+        /*this.new().then(() => {
             this.signUp({
                 gender: 'MALE',
                 yearOfBirth: 1989,
@@ -32,7 +32,7 @@ export class UserService {
                 householdSize: 2,
                 pet: true,
             })
-        })
+        })*/
 
     }
 
