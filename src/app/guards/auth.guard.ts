@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
 
     async canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         if (!await this.userService.loadUser()) {
-            this.router.navigate(['signup'])
+            await this.router.navigate(['signup'])
             return false
         }
 

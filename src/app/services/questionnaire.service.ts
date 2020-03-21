@@ -12,7 +12,7 @@ interface IQuestionnaire {
 })
 export class QuestionnaireService {
 
-    baseUrl: string = '/backend';
+    private readonly baseUrl = `http://${window.location.hostname}:8080`;
 
     constructor(private http: HttpClient) {
     }

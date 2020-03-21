@@ -20,7 +20,7 @@ export class UserService {
 
     public user?: User
 
-    private readonly baseUrl = 'http://localhost:8080';
+    private readonly baseUrl = `http://${window.location.hostname}:8080`;
 
     constructor(private http: HttpClient) {
 
@@ -60,7 +60,6 @@ export class UserService {
         if (!userJson) {
             return
         }
-
 
         this.user = JSON.parse(userJson)
         return this.user

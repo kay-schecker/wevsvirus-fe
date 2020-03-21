@@ -15,7 +15,7 @@ export class UnauthGuard implements CanActivate {
 
   async canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (await this.userService.loadUser()) {
-      this.router.navigate([''])
+      await this.router.navigate([''])
       return false
     }
 
