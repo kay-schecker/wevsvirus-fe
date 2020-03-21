@@ -1,0 +1,61 @@
+<form (ngSubmit)="sendSignUp()">
+    <ion-list>
+        <ion-radio-group
+            (ionChange)="radioSelect($event, 'gender')"
+            value="{{ signUpData.gender }}"
+        >
+            <ion-list-header>
+                <ion-label>
+                    Geschlecht
+                </ion-label>
+            </ion-list-header>
+
+            <ion-item>
+                <ion-label>Weiblich</ion-label>
+                <ion-radio
+                        value="FEMALE"
+                        name="gender"
+                ></ion-radio>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Männlich</ion-label>
+                <ion-radio
+                        value="MALE"
+                        name="gender"
+                ></ion-radio>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Divers</ion-label>
+                <ion-radio
+                        value="DIVERS"
+                        name="gender"
+                ></ion-radio>
+            </ion-item>
+        </ion-radio-group>
+    </ion-list>
+
+    <ion-list>
+        <ion-item>
+            <ion-label>Geburtsjahr</ion-label>
+            <input type="number" name="yearOfBirth" [(ngModel)]="signUpData.yearOfBirth">
+        </ion-item>
+    </ion-list>
+
+    <ion-list>
+        <ion-item>
+            <ion-label>Postleitzahl</ion-label>
+            <ion-input type="string" name="plz" [(ngModel)]="signUpData.plz"></ion-input>
+        </ion-item>
+    </ion-list>
+
+    <ion-list>
+
+        <ion-item>
+            <ion-label>Anzahl der Personen im Haushalt</ion-label>
+            <input type="number" name="householdSize" [(ngModel)]="signUpData.householdSize">
+        </ion-item>
+    </ion-list>
+
+</form>
