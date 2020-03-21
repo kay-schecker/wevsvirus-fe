@@ -1,6 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
-import {generate} from 'short-uuid';
 import {IonSlides} from '@ionic/angular';
+import {UserService} from '../services/user.service';
 
 @Component({
     selector: 'app-signup',
@@ -11,7 +11,8 @@ export class SignupPage {
 
     @ViewChild('slider') slider: IonSlides;
 
-    public readonly userId = generate()
+    constructor(public readonly userService: UserService) {
+    }
 
     public next(e: Event) {
         // e.preventDefault();

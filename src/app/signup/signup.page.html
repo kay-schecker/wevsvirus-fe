@@ -20,7 +20,7 @@
     <ion-slide>
       <img src="./assets/slide-3.png"/>
       <h2>Deine Nutzer-ID:</h2>
-      <h1 class="user-id">{{userId}}</h1>
+      <h1 class="user-id">{{userService.user.id}}</h1>
       <p><b>Datenschutz ist uns sehr wichtig</b> daher ... is a powerful set of services and features built on top of Ionic Framework that brings a totally new level of app development agility to mobile dev teams.</p>
       <ion-button (click)="next($event)" fill="clear">Ok, weiter<ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
 
