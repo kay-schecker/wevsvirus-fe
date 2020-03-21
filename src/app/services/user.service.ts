@@ -34,7 +34,7 @@ export class UserService {
     }
 
     public async new(): Promise<User> {
-        this.user = {
+        return this.user = {
             id: generate()
         }
     }
