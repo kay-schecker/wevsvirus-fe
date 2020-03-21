@@ -93,21 +93,34 @@
             <ion-col size="12">
                 <ion-item-divider class="multiline">
                     <ion-label>
-                        Wie viele Personen leben mit Dir in einem Haushalt?
+                        Wie viele Personen leben insgesamt in Deinem Haushalt?
                     </ion-label>
                 </ion-item-divider>
             </ion-col>
-            <ion-col size="12">
-                <ion-input
-                        type="number"
-                        name="householdSize"
-                        class="input"
-                        placeholder=""
-                        required
-                        [(ngModel)]="signUpData.householdSize"
-                >
 
-                </ion-input>
+            <ion-col size="12">
+                <ion-radio-group
+                        (ionChange)="radioSelect($event, 'householdSize')"
+                        value="{{ signUpData.householdSize }}"
+                >
+                    <ion-item>
+                        <ion-select
+                                value="0"
+                                okText="Okay"
+                                cancelText="Cancel"
+                                placeholder="Bitte auswählen"
+                                style="max-width: 100%;"
+                        >
+                            <ion-select-option
+                                    *ngFor="let amount of Arr(10); let i = index"
+                                    value="{{ i + 1 }}"
+                                    name="householdSize"
+                            >
+                                {{ i +1 }}
+                            </ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-radio-group>
             </ion-col>
         </ion-row>
 
@@ -144,14 +157,14 @@
         </ion-row>
 
         <ion-row>
-           <ion-col size="12">
-               <ion-button
-                       type="submit"
-                       expand="full"
-               >
-                   Weiter zum Fragebogen
-               </ion-button>
-           </ion-col>
+            <ion-col size="12">
+                <ion-button
+                        type="submit"
+                        expand="full"
+                >
+                    Weiter zum Fragebogen
+                </ion-button>
+            </ion-col>
         </ion-row>
     </ion-grid>
 </form>
