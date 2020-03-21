@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 export interface MoodQuestion {
     id: string
@@ -12,7 +12,7 @@ export interface MoodQuestion {
     templateUrl: './form.component.html',
     styleUrls: ['./form.component.scss'],
 })
-export class QuestFormComponent implements OnInit {
+export class QuestFormComponent {
 
     public questions = [{
         id: '72eciMp5RMiA2u5dfwgtAX',

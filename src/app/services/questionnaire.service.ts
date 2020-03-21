@@ -4,17 +4,17 @@ import {HttpClient} from '@angular/common/http';
 export interface IQuestionnaire {
     userId: string
     responseDate: string // 2020-03-20
-    moodResponses: [{
+    moodResponses: {
         questionId: string
         response: number
-    }],
-    healthResponses: [{
+    }[],
+    healthResponses: {
         questionId: string
         response: {
             hours: number
             minutes: number
         }
-    }]
+    }[]
 }
 
 

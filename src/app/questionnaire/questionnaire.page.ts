@@ -10,7 +10,7 @@ import {MoodQuestion} from './form/form.component';
 })
 export class QuestionnairePage implements OnInit {
 
-    private readonly state: IQuestionnaire
+    private state: IQuestionnaire
 
     constructor(
         private readonly userService: UserService,
