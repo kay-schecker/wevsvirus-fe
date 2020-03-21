@@ -1,8 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IQuestionnaire, QuestionnaireService} from '../services/questionnaire.service';
 import {UserService} from '../services/user.service';
-import {MoodQuestion} from './form/form.component';
-import {HealthQuestion} from './health/health.component';
+import {MoodQuestion} from '../services/question.service';
 
 @Component({
     selector: 'app-questionnaire',

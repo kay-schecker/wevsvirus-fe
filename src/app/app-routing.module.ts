@@ -5,26 +5,30 @@ import {UnauthGuard} from './guards/unauth.guard';
 
 const routes: Routes = [{
     path: 'tb',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
 }, {
     path: 'signup',
     canActivate: [UnauthGuard],
-    loadChildren: () => import('./signup/signup.module').then(m => m.SignupPageModule)
+    loadChildren: () => import('./signup/signup.module').then(m => m.SignupPageModule),
 }, {
     path: 'signup/user-sign-up-page',
     canActivate: [UnauthGuard],
-    loadChildren: () => import('./user-sign-up-page/user-sign-up-page.module').then(m => m.UserSignUpPagePageModule)
+    loadChildren: () => import('./user-sign-up-page/user-sign-up-page.module').then(m => m.UserSignUpPagePageModule),
 }, {
     path: '',
     canActivate: [AuthGuard],
-    loadChildren: () => import('./questionnaire/questionnaire.module').then(m => m.QuestionnairePageModule)
+    loadChildren: () => import('./questionnaire/questionnaire.module').then(m => m.QuestionnairePageModule),
+}, {
+    path: 'personal-report',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./personal-report/personal-report.module').then(m => m.PersonalReportPageModule),
 }];
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})
+        RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules}),
     ],
-    exports: [RouterModule]
+    exports: [RouterModule],
 })
 export class AppRoutingModule {
 }
