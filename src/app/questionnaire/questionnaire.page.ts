@@ -1,3 +1,5 @@
+import debounce from 'lodash/debounce';
+
 import {Component, Input, OnInit} from '@angular/core';
 import {IQuestionnaire, QuestionnaireService} from '../services/questionnaire.service';
 import {UserService} from '../services/user.service';
@@ -11,6 +13,8 @@ import {MoodQuestion, HealthQuestion} from '../services/question.service';
 export class QuestionnairePage implements OnInit {
 
     private state: IQuestionnaire;
+
+    private debouncedSave: any;
 
     @Input()
     public moode = true;
@@ -28,6 +32,11 @@ export class QuestionnairePage implements OnInit {
             moodResponses: [],
             healthResponses: [],
         };
+        const fn = () => {
+            this.questService.save(this.state);
+        };
+
+        this.debouncedSave = debounce(fn, 200);
     }
 
     async onMoodResponse(event: MoodQuestion[]) {
@@ -36,7 +45,8 @@ export class QuestionnairePage implements OnInit {
             response: value,
         }));
 
-        await this.questService.save(this.state);
+        this.debouncedSave();
+        // await this.questService.save(this.state);
     }
 
     async onHealthResponse(event: HealthQuestion[]) {
@@ -45,7 +55,8 @@ export class QuestionnairePage implements OnInit {
             response: value,
         }));
 
-        await this.questService.save(this.state);
+        this.debouncedSave();
+        // await this.questService.save(this.state);
     }
 
 }
