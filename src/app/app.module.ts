@@ -7,15 +7,19 @@ import {IonicModule, IonicRouteStrategy} from '@ionic/angular';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
+import {UserSignUpFormComponent} from './user-sign-up-form/user-sign-up-form.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [AppComponent, UserSignUpFormComponent],
     entryComponents: [],
     imports: [
         BrowserModule,
         IonicModule.forRoot(),
         AppRoutingModule,
         HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
     ],
     providers: [{provide: RouteReuseStrategy, useClass: IonicRouteStrategy}],
     bootstrap: [AppComponent],
