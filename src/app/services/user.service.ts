@@ -7,7 +7,7 @@ export interface UserData {
     yearOfBirth: number
     plz: string
     householdSize: number
-    pet: boolean
+    pet: boolean | string
 }
 
 
