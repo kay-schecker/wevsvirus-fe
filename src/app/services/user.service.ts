@@ -44,7 +44,11 @@ export class UserService {
 
     public async signUp(data: UserData): Promise<User> {
 
-        this.user = {id: this.user?.id, ...data}
+        this.user = {
+            ...data,
+            id: this.user?.id,
+            pet: data.pet === '1'
+        }
 
         await this.http
             .post<User>(`${this.baseUrl}/register`, this.user)

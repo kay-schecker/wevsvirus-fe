@@ -11,6 +11,10 @@ const routes: Routes = [{
     canActivate: [UnauthGuard],
     loadChildren: () => import('./signup/signup.module').then(m => m.SignupPageModule)
 }, {
+    path: 'signup/user-sign-up-page',
+    canActivate: [UnauthGuard],
+    loadChildren: () => import('./user-sign-up-page/user-sign-up-page.module').then(m => m.UserSignUpPagePageModule)
+}, {
     path: '',
     canActivate: [AuthGuard],
     loadChildren: () => import('./questionnaire/questionnaire.module').then(m => m.QuestionnairePageModule)

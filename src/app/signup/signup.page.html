@@ -1,6 +1,8 @@
 <ion-content fullscreen class="ion-padding" scroll-y="false">
   <ion-slides #slider pager="true">
 
+
+
     <ion-slide>
       <div class="slide">
         <img src="./assets/logo.jpg"/>
@@ -22,15 +24,15 @@
       <h2>Deine Nutzer-ID:</h2>
       <h1 class="user-id">{{userService.user.id}}</h1>
       <p><b>Datenschutz ist uns sehr wichtig</b> daher ... is a powerful set of services and features built on top of Ionic Framework that brings a totally new level of app development agility to mobile dev teams.</p>
-      <ion-button (click)="next($event)" fill="clear">Ok, weiter<ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
-
+      <ion-button routerLink="user-sign-up-page" fill="clear">Ok, weiter<ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
+<!--      <ion-button (click)="next($event)" fill="clear">Ok, weiter<ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>-->
     </ion-slide>
 
-    <ion-slide>
-      <img src="./assets/slide-4.png"/>
-      <h2>Ready to Play?</h2>
-      <ion-button fill="clear">Continue <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
-    </ion-slide>
-
+<!--    <ion-slide>-->
+<!--      <img src="./assets/slide-4.png"/>-->
+<!--      <h2>Ready to Play?</h2>-->
+<!--      <ion-button fill="clear">Continue <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>-->
+<!--      <app-user-sign-up-form></app-user-sign-up-form>-->
+<!--    </ion-slide>-->
   </ion-slides>
 </ion-content>

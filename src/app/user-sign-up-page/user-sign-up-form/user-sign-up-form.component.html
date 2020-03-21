@@ -1,0 +1,155 @@
+<form (ngSubmit)="sendSignUp()">
+    <h1>Wer bist du?</h1>
+
+    <ion-grid>
+        <ion-row>
+
+            <ion-col size="12">
+                <ion-item-divider>
+                    <ion-label>
+                        Geschlecht:
+                    </ion-label>
+                </ion-item-divider>
+            </ion-col>
+
+            <ion-col size="12">
+                <ion-radio-group
+                        (ionChange)="radioSelect($event, 'gender')"
+                        value="{{ signUpData.gender }}"
+                >
+                    <ion-item>
+                        <ion-label>Weiblich</ion-label>
+                        <ion-radio
+                                value="FEMALE"
+                                name="gender"
+                        ></ion-radio>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Männlich</ion-label>
+                        <ion-radio
+                                value="MALE"
+                                name="gender"
+                        ></ion-radio>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Divers</ion-label>
+                        <ion-radio
+                                value="DIVERS"
+                                name="gender"
+                        ></ion-radio>
+                    </ion-item>
+                </ion-radio-group>
+            </ion-col>
+
+        </ion-row>
+
+        <ion-row>
+            <ion-col size="12">
+                <ion-item-divider>
+                    <ion-label>
+                        In Welchem Jahr bist du geboren?
+                    </ion-label>
+                </ion-item-divider>
+            </ion-col>
+            <ion-col size="12">
+                <ion-input
+                    type="number"
+                    name="yearOfBirth"
+                    class="input"
+                    placeholder="1981"
+                    [(ngModel)]="signUpData.yearOfBirth"
+                >
+
+                </ion-input>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col size="12">
+                <ion-item-divider>
+                    <ion-label>
+                        Postleitzahl (erste drei Ziffern):
+                    </ion-label>
+                </ion-item-divider>
+            </ion-col>
+            <ion-col size="12">
+                <ion-input
+                        type="string"
+                        name="plz"
+                        class="input"
+                        placeholder="531"
+                        [(ngModel)]="signUpData.plz"
+                >
+
+                </ion-input>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col size="12">
+                <ion-item-divider class="multiline">
+                    <ion-label>
+                        Wie viele Personen leben mit Dir in einem Haushalt?
+                    </ion-label>
+                </ion-item-divider>
+            </ion-col>
+            <ion-col size="12">
+                <ion-input
+                        type="number"
+                        name="householdSize"
+                        class="input"
+                        placeholder=""
+                        required
+                        [(ngModel)]="signUpData.householdSize"
+                >
+
+                </ion-input>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col size="12">
+                <ion-item-divider>
+                    <ion-label>
+                        Hast du ein Haustier?
+                    </ion-label>
+                </ion-item-divider>
+            </ion-col>
+            <ion-col size="12">
+                <ion-radio-group
+                        (ionChange)="radioSelect($event, 'pet')"
+                        value="{{ signUpData.pet }}"
+                >
+                    <ion-item>
+                        <ion-label>Ja</ion-label>
+                        <ion-radio
+                                value="1"
+                                name="pet"
+                        ></ion-radio>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Nein</ion-label>
+                        <ion-radio
+                                value="0"
+                                name="pet"
+                        ></ion-radio>
+                    </ion-item>
+                </ion-radio-group>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+           <ion-col size="12">
+               <ion-button
+                       type="submit"
+                       expand="full"
+               >
+                   Weiter zum Fragebogen
+               </ion-button>
+           </ion-col>
+        </ion-row>
+    </ion-grid>
+</form>
