@@ -1,38 +1,47 @@
 <ion-content fullscreen class="ion-padding" scroll-y="false">
-  <ion-slides #slider pager="true">
+    <ion-slides #slider pager="true">
+        <ion-slide>
+            <div class="slide">
+                <img src="./assets/logo.jpg"/>
+                <h2>Welcome</h2>
+                <p>The <b>ionic conference app</b> is a practical preview of the ionic framework in action, and a
+                    demonstration of proper code use.</p>
+                <ion-button (click)="next($event)" fill="clear">Los gehts
+                    <ion-icon slot="end" name="arrow-forward"></ion-icon>
+                </ion-button>
+            </div>
+        </ion-slide>
 
+        <ion-slide>
+            <img src="./assets/slide-2.png"/>
+            <h2>Um was gehts?</h2>
+            <p><b>Ionic Framework</b> is an open source SDK that enables developers to build high quality mobile apps
+                with web technologies like HTML, CSS, and JavaScript.</p>
+            <ion-button (click)="next($event)" fill="clear">Cool ich bin dabei
+                <ion-icon slot="end" name="arrow-forward"></ion-icon>
+            </ion-button>
+        </ion-slide>
 
+        <ion-slide>
+            <img src="./assets/slide-3.png"/>
+            <h2>Deine Nutzer-ID:</h2>
+            <h1 class="user-id">{{userService.user.id}}</h1>
+            <!--      <p><b>Datenschutz ist uns sehr wichtig</b> daher ... is a powerful set of services and features built on top of Ionic Framework that brings a totally new level of app development agility to mobile dev teams.</p>-->
+            <ion-button
+                    routerLink="user-sign-up-page"
+                    expand="full"
+            >
+                Weiter zur Umfrage
+<!--                <ion-icon slot="end" name="arrow-forward"></ion-icon>-->
+            </ion-button>
+            <!--      <ion-button (click)="next($event)" fill="clear">Ok, weiter<ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>-->
+        </ion-slide>
 
-    <ion-slide>
-      <div class="slide">
-        <img src="./assets/logo.jpg"/>
-        <h2>Welcome</h2>
-        <p>The <b>ionic conference app</b> is a practical preview of the ionic framework in action, and a demonstration of proper code use.</p>
-        <ion-button (click)="next($event)" fill="clear">Los gehts <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
-      </div>
-    </ion-slide>
-
-    <ion-slide>
-      <img src="./assets/slide-2.png"/>
-      <h2>Um was gehts?</h2>
-      <p><b>Ionic Framework</b> is an open source SDK that enables developers to build high quality mobile apps with web technologies like HTML, CSS, and JavaScript.</p>
-      <ion-button (click)="next($event)" fill="clear">Cool ich bin dabei<ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
-    </ion-slide>
-
-    <ion-slide>
-      <img src="./assets/slide-3.png"/>
-      <h2>Deine Nutzer-ID:</h2>
-      <h1 class="user-id">{{userService.user.id}}</h1>
-<!--      <p><b>Datenschutz ist uns sehr wichtig</b> daher ... is a powerful set of services and features built on top of Ionic Framework that brings a totally new level of app development agility to mobile dev teams.</p>-->
-      <ion-button routerLink="user-sign-up-page" fill="clear">Ok, weiter<ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
-<!--      <ion-button (click)="next($event)" fill="clear">Ok, weiter<ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>-->
-    </ion-slide>
-
-<!--    <ion-slide>-->
-<!--      <img src="./assets/slide-4.png"/>-->
-<!--      <h2>Ready to Play?</h2>-->
-<!--      <ion-button fill="clear">Continue <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>-->
-<!--      <app-user-sign-up-form></app-user-sign-up-form>-->
-<!--    </ion-slide>-->
-  </ion-slides>
+        <!--    <ion-slide>-->
+        <!--      <img src="./assets/slide-4.png"/>-->
+        <!--      <h2>Ready to Play?</h2>-->
+        <!--      <ion-button fill="clear">Continue <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>-->
+        <!--      <app-user-sign-up-form></app-user-sign-up-form>-->
+        <!--    </ion-slide>-->
+    </ion-slides>
 </ion-content>

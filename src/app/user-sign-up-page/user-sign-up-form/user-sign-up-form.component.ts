@@ -53,7 +53,7 @@ export class UserSignUpFormComponent implements OnInit {
         } else { // invalid form
             this.alertController.create({
                 header: 'Eingaben unvollständig',
-                message: 'Bitte beantworten Sie sämtliche Fragen',
+                message: 'Bitte beantworten Sie sämtliche Fragen.',
                 buttons: ['OK'],
             }).then((alert) => {
                 alert.present();
