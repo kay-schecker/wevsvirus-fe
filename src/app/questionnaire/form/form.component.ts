@@ -1,4 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+
+export interface MoodQuestion {
+    id: string
+    question: string
+    emoji: string
+    value: number
+}
 
 @Component({
     selector: 'quest-form',
@@ -7,31 +14,49 @@ import {Component, OnInit} from '@angular/core';
 })
 export class QuestFormComponent implements OnInit {
 
-
     public questions = [{
+        id: '72eciMp5RMiA2u5dfwgtAX',
         question: 'Wie gut geht es Dir?',
-        emoji: '🙂'
+        emoji: '🙂',
+        value: 0,
     }, {
+        id: 'oDHa9ZEb5KNChgmJ65fBx2',
         question: 'Wie ängstlich fühlst Du Dich?',
-        emoji: '😳'
+        emoji: '😳',
+        value: 0,
     }, {
+        id: 'rdjhVEbqnope4vL8MfAJ9Y',
         question: 'Wie wütend bist Du?',
-        emoji: '😡'
+        emoji: '😡',
+        value: 0,
     }, {
+        id: 'kcz8NZb2chFP1RiZdURTw2',
         question: 'Wie einsam fühlst Du Dich?',
-        emoji: '🚶‍'
+        emoji: '🚶‍',
+        value: 0,
     }, {
+        id: 'o4uyZ9so3oiuAzspbH3YPf',
         question: 'Wie gestresst fühlst Du Dich?',
-        emoji: '🤯'
+        emoji: '🤯',
+        value: 0,
     }, {
+        id: 'ggonDssvB639H2Bzbd4ac2',
         question: 'Wie zufrieden bist Du?',
-        emoji: '😊'
+        emoji: '😊',
+        value: 0,
     }]
 
-    constructor() {
-    }
+    @Output()
+    public readonly onChange = new EventEmitter<MoodQuestion[]>()
 
-    ngOnInit() {
+    onRangeChange(id: string, value: number) {
+        this.onChange.emit(this.questions.map(q => {
+            if (q.id === id) {
+                q.value = value
+            }
+
+            return q
+        }))
     }
 
 }

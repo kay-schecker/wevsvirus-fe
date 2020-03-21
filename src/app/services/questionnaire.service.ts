@@ -1,9 +1,20 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
-interface IQuestionnaire {
-    uid: number,
-    answer1: string,
+export interface IQuestionnaire {
+    userId: string
+    responseDate: string // 2020-03-20
+    moodResponses: [{
+        questionId: string
+        response: number
+    }],
+    healthResponses: [{
+        questionId: string
+        response: {
+            hours: number
+            minutes: number
+        }
+    }]
 }
 
 
@@ -17,7 +28,8 @@ export class QuestionnaireService {
     constructor(private http: HttpClient) {
     }
 
-    send(questionnaire: IQuestionnaire) {
-        return this.http.post<IQuestionnaire>(this.baseUrl, questionnaire);
+    async save(questionnaire: IQuestionnaire): Promise<IQuestionnaire> {
+        await this.http.post<IQuestionnaire>(this.baseUrl + '/questionnaire', questionnaire).toPromise();
+        return questionnaire
     }
 }
