@@ -1,4 +1,7 @@
 import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {User} from './user.service';
 
 export interface MoodQuestion {
     id: string
@@ -96,9 +99,12 @@ const healthQuestions: HealthQuestion[] = [{
 })
 export class QuestionService {
 
-    constructor() {
+    constructor(private readonly http: HttpClient) {
     }
-
     getAllMoodQuestions = () => moodQuestions;
     getAllHealthQuestions = () => healthQuestions;
+
+    public async loadUserMoodQuestions(userId): Promise<Array<MoodQuestion>> {
+        return await this.http.get<Array<MoodQuestion>>(`http://${window.location.hostname}:8080/mood?id=${userId}`).toPromise();
+    }
 }
