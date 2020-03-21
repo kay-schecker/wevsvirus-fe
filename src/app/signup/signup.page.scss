@@ -34,6 +34,15 @@ p b {
 
 .user-id {
   background: #e6e6e6;
-  padding: 0.3em;
+  padding: 0.3rem;
   font-weight: normal;
+}
+
+.slide img {
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+
+  + h2 {
+    margin-top: 0.5rem !important;
+  }
 }
