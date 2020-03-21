@@ -24,13 +24,16 @@ export class UserService {
 
     constructor(private http: HttpClient) {
 
-        /*this.signUp({
-            gender: 'MALE',
-            yearOfBirth: 1988,
-            plz: '75321',
-            householdSize: 2,
-            pet: true,
-        })*/
+        this.new().then(() => {
+            this.signUp({
+                gender: 'MALE',
+                yearOfBirth: 1989,
+                plz: '75321',
+                householdSize: 2,
+                pet: true,
+            })
+        })
+
     }
 
     public async new(): Promise<User> {

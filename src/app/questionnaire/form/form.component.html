@@ -1,0 +1,25 @@
+<ion-grid>
+    <ion-row *ngFor="let q of questions">
+        <ion-col size="12">
+            <ion-item-divider>
+                <ion-label>
+                    {{q.question}}
+                </ion-label>
+            </ion-item-divider>
+        </ion-col>
+        <ion-col size="2" center class="emoji">
+            🧠
+        </ion-col>
+        <ion-col size="8">
+            <ion-range color="danger" pin="true"></ion-range>
+        </ion-col>
+        <ion-col size="2" center class="emoji">
+            {{q.emoji}}
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <ion-button expand="full">Full Button</ion-button>
+        </ion-col>
+    </ion-row>
+</ion-grid>
