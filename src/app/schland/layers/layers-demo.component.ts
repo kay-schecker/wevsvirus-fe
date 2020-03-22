@@ -144,12 +144,9 @@ export class LeafletLayersDemoComponent implements OnInit {
             .then((resp) => {
 
                 const wieGehtEsDirAntwortenNachPLZ = resp['72eciMp5RMiA2u5dfwgtAX'];
-                console.log("REP ", wieGehtEsDirAntwortenNachPLZ);
-                console.log("GEOJ", plzGeoJson);
 
                 plzGeoJson.features
                     .forEach((feature) => {
-                        console.log("GEOMETRY", feature.geometry);
                         this.geoJSON.layer.addLayer(geoJSON(feature.geometry, {
                             style: () => ({color: '#dddddd'}),
                         }));

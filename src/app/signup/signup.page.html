@@ -2,10 +2,8 @@
     <ion-slides #slider pager="true">
         <ion-slide>
             <div class="slide">
-                <img src="./assets/logo.jpg"/>
-                <h2>Welcome</h2>
-                <p>The <b>ionic conference app</b> is a practical preview of the ionic framework in action, and a
-                    demonstration of proper code use.</p>
+                <img src="./assets/Onboarding_01.png" />
+                <p>Schätze täglich Deine Stimmung ein und hilf damit Dir und anderen, ein aktuelles Stimmungsbild zu erstellen.</p>
                 <ion-button (click)="next($event)" fill="clear">Los gehts
                     <ion-icon slot="end" name="arrow-forward"></ion-icon>
                 </ion-button>
@@ -13,28 +11,24 @@
         </ion-slide>
 
         <ion-slide>
-            <img src="./assets/slide-2.png"/>
-            <h2>Um was gehts?</h2>
-            <p><b>Ionic Framework</b> is an open source SDK that enables developers to build high quality mobile apps
-                with web technologies like HTML, CSS, and JavaScript.</p>
+            <img src="./assets/Onboarding_02.png" />
+            <p>Hier sieht Du, wie sich die Stimmungslage im Land entwickelt - und wie es Deinen Mitmenschen auch in Deiner Region geht. Damit wir gemeinsam gegensteuern können. </p>
             <ion-button (click)="next($event)" fill="clear">Cool ich bin dabei
                 <ion-icon slot="end" name="arrow-forward"></ion-icon>
             </ion-button>
         </ion-slide>
 
         <ion-slide>
-            <img src="./assets/slide-3.png"/>
-            <h2>Deine Nutzer-ID:</h2>
-            <h1 class="user-id">{{userService.user.id}}</h1>
-            <!--      <p><b>Datenschutz ist uns sehr wichtig</b> daher ... is a powerful set of services and features built on top of Ionic Framework that brings a totally new level of app development agility to mobile dev teams.</p>-->
+            <img src="./assets/Onboarding_03.png" />
+            <p>Alle Eingaben erfolgen anonymisiert und erlauben keine Rückschlüsse auf Deine Person. Sie dienen nur der Ermittlung der Stimmung in Deiner Region und wissenschaftlichen Analysen.</p>
             <ion-button
                     routerLink="user-sign-up-page"
-                    expand="full"
+                    type="submit"
+                    fill="clear"
             >
-                Weiter zur Umfrage
-<!--                <ion-icon slot="end" name="arrow-forward"></ion-icon>-->
+                Super
+                <ion-icon slot="end" name="arrow-forward"></ion-icon>
             </ion-button>
-            <!--      <ion-button (click)="next($event)" fill="clear">Ok, weiter<ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>-->
         </ion-slide>
 
         <!--    <ion-slide>-->
