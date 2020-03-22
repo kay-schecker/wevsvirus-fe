@@ -2,7 +2,12 @@
 // http://ionicframework.com/docs/theming/
 
 /** Ionic CSS Variables **/
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap');
+
 :root {
+  --ion-font-family: 'Source Sans Pro', sans-serif;
+  --ion-default-font: 'Source Sans Pro', sans-serif;
+
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;

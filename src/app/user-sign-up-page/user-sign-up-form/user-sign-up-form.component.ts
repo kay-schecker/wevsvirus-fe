@@ -9,7 +9,6 @@ import {Router} from '@angular/router';
     styleUrls: ['./user-sign-up-form.component.scss'],
 })
 export class UserSignUpFormComponent implements OnInit {
-    Arr = Array;
 
     signUpData: UserData = {
         yearOfBirth: null,

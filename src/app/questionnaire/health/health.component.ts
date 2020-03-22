@@ -32,10 +32,7 @@ export class QuestHealthComponent implements OnInit {
 
         this.onChange.emit(this.questions.map(q => {
             if (q.id === id) {
-                q.value = {
-                    hours: value as any,
-                    minutes: 0,
-                };
+                q.value = value;
             }
 
             return q;

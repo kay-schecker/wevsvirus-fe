@@ -7,7 +7,7 @@ export interface UserData {
     yearOfBirth: number
     plz: string
     householdSize: number
-    pet: boolean | string
+    pet: boolean
 }
 
 
@@ -47,7 +47,6 @@ export class UserService {
         this.user = {
             ...data,
             id: this.user?.id,
-            pet: data.pet === '1'
         }
 
         await this.http

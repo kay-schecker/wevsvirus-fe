@@ -14,10 +14,7 @@ export interface HealthQuestion {
     id: string
     question: string
     emoji: string
-    value: {
-        hours: number
-        minutes: number
-    }
+    value: number
 }
 
 const moodQuestions: MoodQuestion[] = [{
@@ -56,42 +53,27 @@ const healthQuestions: HealthQuestion[] = [{
     id: 'bJyjEuGz6VF3kwVxz7RQ8c',
     question: 'Wie lange hast du geschlafen?',
     emoji: '🌙',
-    value: {
-        hours: 0,
-        minutes: 0,
-    },
+    value: 0,
 }, {
     id: 'rPjhtwjTyfAQ433jVDHSvU',
     question: 'Wie lange hast Du Dich heute über Corona informiert (Nachrichten, Social Media, TV..)',
     emoji: '📰',
-    value: {
-        hours: 0,
-        minutes: 0,
-    },
+    value: 0,
 }, {
     id: '84rfLqZxi9X9Y8y9hQrLKB',
     question: 'Wie lange hattest Du heute Kontakt zu Anderen (Telefon, Skype, persönlich)?',
     emoji: '💬',
-    value: {
-        hours: 0,
-        minutes: 0,
-    },
+    value: 0,
 }, {
     id: 'vSvCia11kNsj43DVqiMNF9',
     question: 'Wie lange warst Du heute an der frischen Luft?',
     emoji: '🌤‍',
-    value: {
-        hours: 0,
-        minutes: 0,
-    },
+    value: 0,
 }, {
     id: 'bJyjEuGz6VF3kwVxz7RQ8c',
     question: 'Wie lange hast Du heute Sport gemacht?',
     emoji: '💪',
-    value: {
-        hours: 0,
-        minutes: 0,
-    },
+    value: 0,
 }];
 
 @Injectable({
@@ -101,6 +83,7 @@ export class QuestionService {
 
     constructor(private readonly http: HttpClient) {
     }
+
     getAllMoodQuestions = () => moodQuestions;
     getAllHealthQuestions = () => healthQuestions;
 

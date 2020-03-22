@@ -10,10 +10,7 @@ export interface IQuestionnaire {
     }[],
     healthResponses: {
         questionId: string
-        response: {
-            hours: number
-            minutes: number
-        }
+        response: number
     }[]
 }
 
