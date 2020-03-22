@@ -103,7 +103,7 @@ export class LeafletLayersDemoComponent {
 	};
 	options = {
 		zoom: 10,
-		center: latLng(46.879966, -121.726909)
+		center: latLng(51.9481, 10.26517),
 	};
 
 	constructor() {
