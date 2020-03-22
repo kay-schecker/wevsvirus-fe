@@ -1,3 +1,5 @@
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouteReuseStrategy} from '@angular/router';
@@ -19,6 +21,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
+        LeafletModule.forRoot(),
     ],
     providers: [{provide: RouteReuseStrategy, useClass: IonicRouteStrategy}],
     bootstrap: [AppComponent],
