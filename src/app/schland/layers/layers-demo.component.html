@@ -1,17 +1,12 @@
-<!--<div leaflet style="height: 100%; width: 100%"
-     [leafletOptions]="options"
-     [leafletLayers]="layers"
-     [leafletLayersControl]="layersControl">
-</div>-->
-
-<div style="padding: 0.5rem;  width: 100%; height: 100%;">
+<ng-container *ngIf="chartMap | async as map">
     <ng-container [ngSwitch]="questionId">
-        <div *ngSwitchCase="'72eciMp5RMiA2u5dfwgtAX'" style="background: url('./assets/map2.svg') no-repeat center center; background-size: contain; width: 100%; height: 100%;"></div>
-        <div *ngSwitchCase="'oDHa9ZEb5KNChgmJ65fBx2'" style="background: url('./assets/map3.svg') no-repeat center center; background-size: contain; width: 100%; height: 100%;"></div>
-        <div *ngSwitchCase="'rdjhVEbqnope4vL8MfAJ9Y'" style="background: url('./assets/map2.svg') no-repeat center center; background-size: contain; width: 100%; height: 100%;"></div>
-        <div *ngSwitchCase="'kcz8NZb2chFP1RiZdURTw2'" style="background: url('./assets/map3.svg') no-repeat center center; background-size: contain; width: 100%; height: 100%;"></div>
-        <div *ngSwitchCase="'o4uyZ9so3oiuAzspbH3YPf'" style="background: url('./assets/map2.svg') no-repeat center center; background-size: contain; width: 100%; height: 100%;"></div>
-        <div *ngSwitchCase="'ggonDssvB639H2Bzbd4ac2'" style="background: url('./assets/map3.svg') no-repeat center center; background-size: contain; width: 100%; height: 100%;"></div>
-        <div *ngSwitchDefault style="background: url('./assets/map.svg') no-repeat center center; background-size: contain; width: 100%; height: 100%;"></div>
+        <ng-container *ngFor="let u of map">
+            <highcharts-chart *ngSwitchCase="u.questionId"
+                              [Highcharts]="Highcharts"
+                              [constructorType]="'mapChart'"
+                              [options]="u.chartOptions"
+                              style="width: 100%; height:100%; display: block;"
+            ></highcharts-chart>
+        </ng-container>
     </ng-container>
-</div>
+</ng-container>

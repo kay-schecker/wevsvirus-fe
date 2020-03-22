@@ -9,6 +9,7 @@ import {SchlandPageRoutingModule} from './schland-routing.module';
 import {SchlandPage} from './schland.page';
 import {LeafletModule} from '@asymmetrik/ngx-leaflet';
 import {LeafletLayersDemoComponent} from './layers/layers-demo.component';
+import {HighchartsChartModule} from 'highcharts-angular';
 
 @NgModule({
     imports: [
@@ -17,6 +18,7 @@ import {LeafletLayersDemoComponent} from './layers/layers-demo.component';
         IonicModule,
         SchlandPageRoutingModule,
         LeafletModule,
+        HighchartsChartModule,
     ],
     declarations: [
         SchlandPage,
