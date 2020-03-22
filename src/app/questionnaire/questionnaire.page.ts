@@ -17,7 +17,7 @@ export class QuestionnairePage implements OnInit {
     private debouncedSave: any;
 
     @Input()
-    public moode = true;
+    public mode = 'moode';
 
     constructor(
         private readonly userService: UserService,

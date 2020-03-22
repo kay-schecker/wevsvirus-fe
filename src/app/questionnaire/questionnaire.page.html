@@ -1,22 +1,16 @@
-<ion-header>
-    <ion-toolbar>
-        <ion-title>questionnaire</ion-title>
-    </ion-toolbar>
-</ion-header>
-
 <ion-content>
 
-    <ion-grid>
-        <ion-col size="12">
-            <ion-item>
-                <ion-label>Mood enabled:</ion-label>
-                <ion-toggle color="primary" [(ngModel)]="moode" [value]="'mood'"></ion-toggle>
-            </ion-item>
-        </ion-col>
-    </ion-grid>
+    <ion-segment (ionChange)="mode = $event.detail.value" [value]="mode">
+        <ion-segment-button value="moode">
+            <ion-label>Stimmung</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="health">
+            <ion-label>Aktivität</ion-label>
+        </ion-segment-button>
+    </ion-segment>
 
-    <ng-container [ngSwitch]="moode">
-        <quest-form *ngSwitchCase="true" (onChange)="onMoodResponse($event)"></quest-form>
-        <quest-health *ngSwitchDefault="false" (onChange)="onHealthResponse($event)"></quest-health>
+    <ng-container [ngSwitch]="mode">
+        <quest-form *ngSwitchCase="'moode'" (onChange)="onMoodResponse($event)"></quest-form>
+        <quest-health *ngSwitchDefault (onChange)="onHealthResponse($event)"></quest-health>
     </ng-container>
 </ion-content>
