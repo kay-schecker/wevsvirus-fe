@@ -5,11 +5,10 @@
 </ion-header>
 
 <ion-content>
-    <div style="width: 50%; overflow: hidden;">
-        <div style="height: 300px;"
-             leaflet
-             [leafletOptions]="options"
-        >
-        </div>
+    <div style="height: 300px; width: 400px;"
+         leaflet
+         [leafletOptions]="options"
+         *ngIf="showMap"
+    >
     </div>
 </ion-content>
