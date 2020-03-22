@@ -22,6 +22,9 @@ const routes: Routes = [{
     path: 'personal-report',
     canActivate: [AuthGuard],
     loadChildren: () => import('./personal-report/personal-report.module').then(m => m.PersonalReportPageModule),
+}, {
+    path: 'schland',
+    loadChildren: () => import('./schland/schland.module').then(m => m.SchlandPageModule),
 }];
 
 @NgModule({
