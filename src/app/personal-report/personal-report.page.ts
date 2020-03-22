@@ -23,7 +23,7 @@ export class PersonalReportPage implements OnInit {
     }
 
     showChart() {
-        const dataOneQuestion = this.moodQuestions['72eciMp5RMiA2u5dfwgtAX'];
+        const dataOneQuestion = this.moodQuestions['72eciMp5RMiA2u5dfwgtAX'] || [];
 
         let dataOneQuestionWithDatesConverted = dataOneQuestion
             .map((d) => {
