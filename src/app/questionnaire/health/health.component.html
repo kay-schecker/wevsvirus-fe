@@ -8,9 +8,8 @@
             </ion-item-divider>
         </ion-col>
         <ion-col size="12">
-            <ion-range #slider color="danger" pin="true" [max]="1200" [step]="15" [snaps]="true"
+            <ion-range #slider color="secondary" pin="true" [max]="1200" [step]="15" [snaps]="true"
                        (ionChange)="onRangeChange(slider, q.id, $event.detail.value)">
-                <ion-label slot="start" class="emoji">0️⃣</ion-label>
                 <ion-label slot="end" class="emoji">{{q.emoji}}</ion-label>
             </ion-range>
         </ion-col>
