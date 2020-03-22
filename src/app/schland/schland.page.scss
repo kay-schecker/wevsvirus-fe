@@ -1,5 +1,6 @@
 ion-segment-button {
   filter: grayscale(100%);
+  min-width: 0;
 
   &.segment-button-checked {
     filter: grayscale(0%);

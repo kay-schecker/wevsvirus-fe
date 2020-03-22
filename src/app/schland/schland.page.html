@@ -20,5 +20,10 @@
                 <ion-label>{{q.emoji}}</ion-label>
             </ion-segment-button>
         </ion-segment>
+        <ng-container *ngFor="let q of questionService.getAllMoodQuestions()" [value]="q.id">
+            <div style="text-align: center; background: #BCFFF7; padding: 0.2rem; color: #002C27" *ngIf="q.id === mode">
+                {{q.question}}
+            </div>
+        </ng-container>
     </ion-toolbar>
 </ion-footer>
