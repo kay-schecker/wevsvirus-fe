@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import * as L from 'leaflet';
+// import * as L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import {circle, latLng, polygon, tileLayer} from 'leaflet';
 
@@ -9,7 +9,7 @@ import {circle, latLng, polygon, tileLayer} from 'leaflet';
     styleUrls: ['./schland.page.scss'],
 })
 export class SchlandPage implements OnInit {
-
+    showDemo = false;
     showMap: Boolean = false;
 
     options = {
@@ -22,19 +22,13 @@ export class SchlandPage implements OnInit {
     };
     layersControl = {
         baseLayers: {
-            'Open Street Map': tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: '...',
-            }),
-            'Open Cycle Map': tileLayer('http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: '...',
-            }),
+            'Open Street Map': tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '...' }),
+            'Open Cycle Map': tileLayer('http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '...' })
         },
         overlays: {
-            'Big Circle': circle([46.95, -122], {radius: 5000}),
-            'Big Square': polygon([[46.8, -121.55], [46.9, -121.55], [46.9, -121.7], [46.8, -121.7]]),
-        },
+            'Big Circle': circle([ 46.95, -122 ], { radius: 5000 }),
+            'Big Square': polygon([[ 46.8, -121.55 ], [ 46.9, -121.55 ], [ 46.9, -121.7 ], [ 46.8, -121.7 ]])
+        }
     };
 
     constructor() {
@@ -58,6 +52,8 @@ export class SchlandPage implements OnInit {
 
         window.setTimeout(() => {
             this.showMap = true;
+            this.showDemo = true;
+
         }, 300);
     }
 

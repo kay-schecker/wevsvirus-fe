@@ -8,6 +8,10 @@ import {SchlandPageRoutingModule} from './schland-routing.module';
 
 import {SchlandPage} from './schland.page';
 import {LeafletModule} from '@asymmetrik/ngx-leaflet';
+import {LeafletLayersDemoComponent} from './layers/layers-demo.component';
+import {LeafletBaseLayersDemoComponent} from './layers/baselayers-demo.component';
+import {LeafletMarkersDemoComponent} from './layers/markers-demo.component';
+import {LeafletNgForLayersDemoComponent} from './layers/ngfor-layers-demo.component';
 
 @NgModule({
     imports: [
@@ -17,7 +21,13 @@ import {LeafletModule} from '@asymmetrik/ngx-leaflet';
         SchlandPageRoutingModule,
         LeafletModule,
     ],
-    declarations: [SchlandPage],
+    declarations: [
+        SchlandPage,
+        LeafletLayersDemoComponent,
+        LeafletBaseLayersDemoComponent,
+        LeafletMarkersDemoComponent,
+        LeafletNgForLayersDemoComponent,
+    ],
 })
 export class SchlandPageModule {
 }
