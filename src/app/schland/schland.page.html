@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content>
-    <leafletLayersDemo *ngIf="showDemo"></leafletLayersDemo>
+    <leafletLayersDemo *ngIf="showDemo" [questionId]="mode"></leafletLayersDemo>
 </ion-content>
 
 <ion-footer>
@@ -20,8 +20,12 @@
                 <ion-label>{{q.emoji}}</ion-label>
             </ion-segment-button>
         </ion-segment>
+    </ion-toolbar>
+
+    <ion-toolbar>
         <ng-container *ngFor="let q of questionService.getAllMoodQuestions()">
-            <div style="text-align: center; background: #BCFFF7; padding: 0.2rem; color: #002C27" *ngIf="q.id === mode">
+            <div style="text-align: center; background: #BCFFF7; padding: 0.2rem; color: #002C27"
+                 *ngIf="q.id === mode">
                 {{q.question}}
             </div>
         </ng-container>

@@ -1,17 +1,20 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 import {circle, geoJSON, icon, latLng, Layer, marker, polygon, tileLayer} from 'leaflet';
 
 import {LeafletLayersDemoModel} from './layers-demo.model';
 import {HttpClient} from '@angular/common/http';
 
-const plzGeoJson = require('./plz.json');
+const plzGeoJson = {};// require('./plz.json');
 
 @Component({
     selector: 'leafletLayersDemo',
     templateUrl: './layers-demo.component.html',
 })
 export class LeafletLayersDemoComponent implements OnInit {
+
+    @Input()
+    questionId: string;
 
     // Open Street Map and Open Cycle Map definitions
     LAYER_OCM = {
@@ -145,12 +148,13 @@ export class LeafletLayersDemoComponent implements OnInit {
 
                 const wieGehtEsDirAntwortenNachPLZ = resp['72eciMp5RMiA2u5dfwgtAX'];
 
+                /*
                 plzGeoJson.features
                     .forEach((feature) => {
                         this.geoJSON.layer.addLayer(geoJSON(feature.geometry, {
                             style: () => ({color: '#dddddd'}),
                         }));
-                    });
+                    });*/
 
             });
 
