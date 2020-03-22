@@ -24,12 +24,13 @@ const routes: Routes = [{
     loadChildren: () => import('./personal-report/personal-report.module').then(m => m.PersonalReportPageModule),
 }, {
     path: 'schland',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./schland/schland.module').then(m => m.SchlandPageModule),
 }];
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules}),
+        RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules, useHash: true}),
     ],
     exports: [RouterModule],
 })
