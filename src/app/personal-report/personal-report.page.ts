@@ -12,6 +12,7 @@ export class PersonalReportPage implements OnInit {
     chartOptions: Highcharts.Options;
 
     moodQuestions: Array<MoodQuestion> = [];
+    labels: {};
 
     constructor(private readonly questionService: QuestionService) {
     }
@@ -19,34 +20,23 @@ export class PersonalReportPage implements OnInit {
     async ngOnInit() {
         const user = JSON.parse(window.localStorage.getItem('user'));
         this.moodQuestions = await this.questionService.loadUserMoodQuestions(user.id);
+        this.labels = this.questionService.getAllMoodQuestions().reduce((acc, q) => {
+            return {
+                ...acc,
+                [q.id]: q.question,
+            };
+        }, {});
+
         this.showChart();
     }
 
     showChart() {
-        const dataOneQuestion = this.moodQuestions['72eciMp5RMiA2u5dfwgtAX'] || [];
-
-        let dataOneQuestionWithDatesConverted = dataOneQuestion
-            .map((d) => {
-                try {
-                    return [Date.parse(d[0]), d[1]];
-                } catch (e) {
-                    return [];
-                }
-            });
-        dataOneQuestionWithDatesConverted = dataOneQuestionWithDatesConverted.sort((a, b) => {
-            return a[0] < b[0] ? 1 : -1;
-        });
-
         this.chartOptions = {
             chart: {
                 zoomType: 'x',
             },
             title: {
-                text: 'Wie gut geht es Dir?',
-            },
-            subtitle: {
-                text: document.ontouchstart === undefined ?
-                    'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in',
+                text: '',
             },
             xAxis: {
                 type: 'datetime',
@@ -57,7 +47,7 @@ export class PersonalReportPage implements OnInit {
                 },
             },
             legend: {
-                enabled: false,
+                enabled: true,
             },
             plotOptions: {
                 area: {
@@ -75,18 +65,22 @@ export class PersonalReportPage implements OnInit {
                 },
             },
 
-            series: [{
-                type: 'line',
-                name: '',
-                data: dataOneQuestionWithDatesConverted,
-            }],
+            series: Object.entries(this.moodQuestions).map(([id, plot]) => {
+                return {
+                    type: 'line',
+                    name: this.labels[id],
+                    data: ((plot || []) as any).map((d) => {
+                        try {
+                            return [Date.parse(d[0]), d[1]];
+                        } catch (e) {
+                            return [];
+                        }
+                    }).sort((a, b) => {
+                        return a[0] < b[0] ? 1 : -1;
+                    }).slice(0, 7),
+                };
+            }),
         };
 
-        // this.chartOptions = {
-        //     series: [{
-        //         data: [1, 2, 3],
-        //         type: 'line',
-        //     }],
-        // };
     }
 }
