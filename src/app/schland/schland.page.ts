@@ -18,7 +18,7 @@ export class SchlandPage implements OnInit {
         ],
         zoom: 3,
         // center: latLng(46.879966, -121.726909),
-        center: latLng(51.9481, 10, 26517),
+        center: latLng(51.9481, 10.26517),
     };
     layersControl = {
         baseLayers: {

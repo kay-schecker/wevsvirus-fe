@@ -71,7 +71,7 @@ export class LeafletLayersDemoComponent {
 				coordinates: [[
 					[ -121.6, 46.87 ],
 					[ -121.5, 46.87 ],
-					[ -121.5, 46.93],
+					[ -121.5, 46.93 ],
 					[ -121.6, 46.87 ]
 				]]
 			}) as any,
