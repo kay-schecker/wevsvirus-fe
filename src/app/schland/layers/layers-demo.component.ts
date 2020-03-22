@@ -80,19 +80,28 @@ export class LeafletLayersDemoComponent {
                         maxColor: '#000000',
                     },
 
+                    tooltip: {
+                        headerFormat: '',
+                        pointFormat: '<strong>PLZ {point.properties.plz}XXX:</strong> {point.value}%',
+                    },
+
+                    legend: {
+                        enabled: false,
+                    },
+
                     series: [{
                         data: d.map(([plz, value]) => [String(plz).slice(0, 2), Math.ceil(value)]),
                         keys: ['plz', 'value'],
+                        name: '',
                         joinBy: 'plz',
-                        name: 'dsdsf',
                         states: {
                             hover: {
                                 color: '#a4edba',
+                                // format: 'LOREM {point.properties.plz}: {value}'
                             },
                         },
                         dataLabels: {
-                            enabled: true,
-                            format: '{point.properties.postal}',
+                            enabled: false,
                         },
                     }],
                 }),
