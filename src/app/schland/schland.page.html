@@ -1,22 +1,24 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>schland</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            Heatmap
+        </ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <div style="height: 300px; width: 400px;"
-         leaflet
-         [leafletOptions]="options"
-         *ngIf="showMap"
-    >
-    </div>
-    <div class="container" *ngIf="showDemo" style="margin-top: 30px;">
-
-
-        <leafletLayersDemo></leafletLayersDemo>
-        <br/>
-
-
-    </div>
+    <leafletLayersDemo *ngIf="showDemo"></leafletLayersDemo>
 </ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-segment [value]="mode" (ionChange)="mode = $event.detail.value">
+            <ion-segment-button *ngFor="let q of questionService.getAllMoodQuestions()" [value]="q.id">
+                <ion-label>{{q.emoji}}</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
+</ion-footer>

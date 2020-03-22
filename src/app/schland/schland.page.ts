@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 // import * as L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import {circle, latLng, polygon, tileLayer} from 'leaflet';
+import {QuestionService} from '../services/question.service';
 
 @Component({
     selector: 'app-schland',
@@ -9,6 +10,9 @@ import {circle, latLng, polygon, tileLayer} from 'leaflet';
     styleUrls: ['./schland.page.scss'],
 })
 export class SchlandPage implements OnInit {
+
+    mode = this.questionService.getAllMoodQuestions()[0].id
+
     showDemo = false;
     showMap: Boolean = false;
 
@@ -31,7 +35,7 @@ export class SchlandPage implements OnInit {
         }
     };
 
-    constructor() {
+    constructor(public readonly questionService: QuestionService) {
     }
 
     ngOnInit() {
