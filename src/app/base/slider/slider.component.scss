@@ -1,0 +1,58 @@
+:host {
+  display: block;
+}
+
+ul {
+  // margin: 0 0 -18px 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  height: 1.5rem;
+  width: 100%;
+  align-items: baseline;
+
+  li {
+    background: var(--ion-color-primary);
+    width: 10%;
+    margin: 0 2px;
+    height: 100%;
+
+    @for $i from 1 to 15 {
+      &:nth-child(#{$i}) {
+        height: $i * (100 / 15) * 1%
+      }
+    }
+
+  }
+}
+
+.label,
+.emoji {
+  font-size: 1.5rem;
+  position: relative;
+
+  span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.label {
+  font-size: 1rem;
+}
+
+ion-range {
+  margin: 0;
+  padding: 0 0.2rem;
+}
+
+ion-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: -0.5rem;
+}

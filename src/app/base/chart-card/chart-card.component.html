@@ -1,0 +1,27 @@
+<ion-card>
+    <ion-card-header>
+        <ion-card-title>{{title$ | async}}</ion-card-title>
+        <ion-card-subtitle>der letzten {{daysToShow}} Tage</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content *ngIf="chart$ | async as chart">
+        <canvas baseChart width="100"
+                [datasets]="chart.data"
+                [labels]="chart.labels"
+                [options]="chart.options"
+                [colors]="chart.colors"
+                [legend]="chart.legend"
+                [chartType]="chart.type">
+        </canvas>
+    </ion-card-content>
+
+    <div class="chart-legend">
+        <ng-container *ngIf="hiddenQuestionIds$ | async as hiddenQuestionIds">
+            <ng-container *ngFor="let q of (questions$ | async)">
+                <div (click)="toggleQuestion(q)" [ngClass]="{disabled: hiddenQuestionIds.has(q.id)}"
+                     [ngStyle]="{borderBottomColor: q.color}">
+                    <span>{{q.emoji}}</span></div>
+            </ng-container>
+        </ng-container>
+    </div>
+</ion-card>
+

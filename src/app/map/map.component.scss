@@ -1,0 +1,58 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+ion-slides {
+  height: 100%;
+  width: 100vw;
+}
+
+ion-fab-button {
+  font-size: 1.8rem;
+}
+
+.slide {
+  display: flex;
+  height: 100%;
+  width: 100%;
+
+  highcharts-chart {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+
+  .svg-container {
+    display: block;
+    height: 100%;
+    width: 100%;
+    padding: 2rem 1rem;
+  }
+
+}
+
+.legend {
+
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  z-index: 100;
+
+  list-style: none;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
+  margin: 0;
+  padding: 0;
+
+  li {
+    color: var(--ion-color-light);
+    text-align: center;
+    padding: 5px;
+    font-size: 0.7rem;
+
+    &:nth-child(-n+3) {
+      color: var(--ion-color-dark);
+    }
+  }
+}

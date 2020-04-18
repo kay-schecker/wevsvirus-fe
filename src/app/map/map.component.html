@@ -1,0 +1,29 @@
+<ng-container *ngIf="questionId$ | async as questionId">
+    <ion-fab horizontal="start" vertical="top" slot="fixed">
+        <ion-fab-button color="primary">{{questionService.getMoodById(questionId)?.emoji}}</ion-fab-button>
+        <ion-fab-list side="bottom">
+            <ion-fab-button *ngFor="let q of questionService.moodQuestions"
+                            color="light"
+                            (click)="selectQuestion(q)">{{q.emoji}}</ion-fab-button>
+        </ion-fab-list>
+    </ion-fab>
+    <!--<ion-fab vertical="top" horizontal="end" slot="fixed">
+        <ion-fab-button color="secondary" (click)="toggleZoom()">
+            <ion-icon [name]="zoomed ? 'contract-outline' : 'expand-outline'"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>-->
+</ng-container>
+
+<ng-container *ngIf="slides$ | async as slides">
+    <ion-slides #slider pager="true"
+                [options]="{initialSlide: slides.length - 1}"
+                (ionSlideDidChange)="onSlideDidChange(slider)">
+        <ion-slide class="slide" *ngFor="let slide of slides">
+            <div class="svg-container" [ngClass]="{zoomed: zoomed}" [innerHTML]="slide.svg"></div>
+        </ion-slide>
+    </ion-slides>
+</ng-container>
+
+<ul class="legend">
+    <li *ngFor="let color of legend" [ngStyle]="{backgroundColor: color.color}">{{color.boundary}}</li>
+</ul>

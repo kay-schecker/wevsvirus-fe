@@ -1,0 +1,67 @@
+<ion-header>
+    <ion-header>
+        <ion-toolbar>
+            <ion-buttons slot="start">
+                <ion-menu-button></ion-menu-button>
+            </ion-buttons>
+            <ion-title>Einstellungen</ion-title>
+        </ion-toolbar>
+    </ion-header>
+</ion-header>
+
+<ion-content>
+    <form *ngIf="(settings$ | async) as settings">
+
+        <ion-item-group>
+
+            <ion-item *ngIf="(user | async)?.id as userId">
+                <ion-label>
+                    Deine Benutzer-ID<br/>
+                </ion-label>
+                <ion-badge (click)="copyUserIdToClipboard(userId)">{{userId}}</ion-badge>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>
+                    Erinnerungsnachricht<br/>
+                    <small>Gerne erinnern wir dich daran deine Stimmungs- und Aktivitätsfragen zu beantworten.</small>
+                </ion-label>
+                <ion-toggle
+                        color="primary"
+                        name="reminderPushNotification.enabled"
+                        [value]="true"
+                        [checked]="settings.reminderPushNotification.enabled"
+                        (ionChange)="settingsService.set($event.target.name, $event.detail.checked)"></ion-toggle>
+            </ion-item>
+
+            <!--<ion-item [disabled]="!settings.enablePush">
+                <ion-label>
+                    An welchen Tagen?
+                </ion-label>
+                <ion-select placeholder="Mo, Di, Mi, Do, Fr, Sa, So" multiple>
+                    <ion-select-option value="MO">Mo</ion-select-option>
+                    <ion-select-option value="DI">Di</ion-select-option>
+                    <ion-select-option value="MI">Mi</ion-select-option>
+                    <ion-select-option value="DO">Do</ion-select-option>
+                    <ion-select-option value="FR">Fr</ion-select-option>
+                    <ion-select-option value="SA">Sa</ion-select-option>
+                    <ion-select-option value="SO">So</ion-select-option>
+                </ion-select>
+            </ion-item>-->
+
+            <ion-item [disabled]="!settings.reminderPushNotification.enabled">
+                <ion-label>
+                    Um wie viel Uhr?
+                </ion-label>
+                <ion-datetime
+                        display-format="HH:mm"
+                        picker-format="HH:mm"
+                        placeholder="20:00"
+                        [value]="settings.reminderPushNotification.time"
+                        (ionChange)="setReminderPushNotificationTime($event.target.value)"></ion-datetime>
+            </ion-item>
+
+        </ion-item-group>
+
+    </form>
+</ion-content>

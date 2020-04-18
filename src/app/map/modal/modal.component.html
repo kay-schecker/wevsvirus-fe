@@ -1,0 +1,37 @@
+<ng-container *ngIf="vm$ | async as vm">
+    <ion-header translucent>
+        <ion-toolbar>
+            <ion-title (click)="showPicker(vm.plz)">Postleitzahl {{vm.plz}}XXX</ion-title>
+            <ion-buttons slot="start">
+                <ion-button (click)="close()">zurück</ion-button>
+            </ion-buttons>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content fullscreen [scrollY]="true" [scrollX]="false" style="background: red">
+
+        <ion-slides pager="true" [options]="{initialSlide: initialSlide}">
+            <ion-slide class="slide" *ngFor="let answerSet of vm.answers">
+
+                <ion-card>
+                    <ion-card-header>
+                        <ion-card-title>{{answerSet.date}}</ion-card-title>
+                    </ion-card-header>
+
+                    <ion-card-content>
+                        <ion-list *ngFor="let q of questionService.moodQuestions" mode="md">
+                            <ion-label>{{q.emoji}} {{q.question}}</ion-label>
+                            <ion-progress-bar *ngIf="answerSet.data[q.id] >= 0; else elseBlock"
+                                              [value]="answerSet.data[q.id] / 100"></ion-progress-bar>
+                            <ng-template #elseBlock>
+                                <ion-progress-bar color="medium"></ion-progress-bar>
+                            </ng-template>
+                        </ion-list>
+                    </ion-card-content>
+                </ion-card>
+
+            </ion-slide>
+        </ion-slides>
+
+    </ion-content>
+</ng-container>
+

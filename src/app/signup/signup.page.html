@@ -1,0 +1,54 @@
+<ion-header>
+    <ion-header>
+        <ion-toolbar>
+            <ion-buttons slot="start">
+                <ion-menu-button></ion-menu-button>
+            </ion-buttons>
+            <ion-title>Wie Geht's?</ion-title>
+        </ion-toolbar>
+    </ion-header>
+</ion-header>
+
+<ion-content fullscreen class="ion-padding" scroll-y="false">
+    <ion-slides #slider pager="true">
+
+        <ion-slide>
+            <div class="slide-image"></div>
+            <div class="slide-content">
+                <p>Schätze täglich Deine Stimmung ein und hilf damit Dir und anderen, ein aktuelles Stimmungsbild zu
+                    erstellen.</p>
+                <ion-button (click)="next($event)" fill="clear">Los gehts
+                    <ion-icon slot="end" name="arrow-forward"></ion-icon>
+                </ion-button>
+            </div>
+        </ion-slide>
+
+        <ion-slide>
+            <div class="slide-image"></div>
+            <div class="slide-content">
+                <p>Hier sieht Du, wie sich die Stimmungslage im Land entwickelt - und wie es Deinen Mitmenschen auch in
+                    Deiner Region geht. Damit wir gemeinsam gegensteuern können. </p>
+                <ion-button (click)="next($event)" fill="clear">Cool ich bin dabei
+                    <ion-icon slot="end" name="arrow-forward"></ion-icon>
+                </ion-button>
+            </div>
+        </ion-slide>
+
+        <ion-slide>
+            <div class="slide-image"></div>
+            <div class="slide-content">
+                <p>Alle Eingaben erfolgen anonymisiert und erlauben keine Rückschlüsse auf Deine Person. Sie dienen nur der
+                    Ermittlung der Stimmung in Deiner Region und wissenschaftlichen Analysen.</p>
+                <ion-button
+                        routerLink="form"
+                        type="submit"
+                        fill="clear"
+                >
+                    Super
+                    <ion-icon slot="end" name="arrow-forward"></ion-icon>
+                </ion-button>
+            </div>
+        </ion-slide>
+
+    </ion-slides>
+</ion-content>

@@ -1,0 +1,25 @@
+ion-slides {
+  height: 100%;
+  background: transparent;
+
+  &:after {
+    content: ' ';
+    background: url('../../../assets/geo/germany.svg') center center no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.02;
+    z-index: -1;
+  }
+}
+
+ion-list {
+  text-align: left;
+
+  ion-progress-bar {
+    margin-top: 0.1rem
+  }
+}

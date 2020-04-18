@@ -1,3 +1,29 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+    <ion-menu side="start" menuId="main" contentId="contentMain">
+        <ion-header>
+            <ion-toolbar class="menu-toolbar">
+                <ion-title class="menu-title">
+                    <img src="/assets/logo.svg"/>
+                </ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content>
+            <ion-list *ngFor="let menuItem of menuItems">
+                <ion-menu-toggle auto-hide="true">
+                    <ion-item [routerLink]="menuItem.url" routerLinkActive="ion-color ion-color-secondary"
+                              routerDirection="forward">
+                        <ion-icon [name]="menuItem.icon" slot="start"></ion-icon>
+                        {{menuItem.title}}
+                    </ion-item>
+                </ion-menu-toggle>
+            </ion-list>
+        </ion-content>
+        <ion-footer>
+            <a href="https://wirvsvirushackathon.org/" target="_blank">
+                <img src="assets/logo-hack.svg"/>
+            </a>
+        </ion-footer>
+    </ion-menu>
+
+    <ion-router-outlet id="contentMain"></ion-router-outlet>
 </ion-app>

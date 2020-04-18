@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="204.5" height="105.426" viewBox="0 0 204.5 105.426">
+  <g id="Gruppe_2" data-name="Gruppe 2" transform="translate(1.5 1.5)">
+    <text id="wiegehts" transform="translate(40 69)" fill="#195750" font-size="38" font-family="Helvetica-Bold, Helvetica" letter-spacing="0.027em" font-weight="700"><tspan x="0" y="0">wi</tspan><tspan y="0" letter-spacing="0.05em">e</tspan><tspan y="0" fill="#fff" font-family="Helvetica" font-weight="400">gehts</tspan></text>
+    <g id="Gruppe_1" data-name="Gruppe 1" transform="translate(-25.394 -17.554)">
+      <path id="Pfad_6" data-name="Pfad 6" d="M33.849,88.072H52.016l-.242,20.485,6.4,6.858-.689,15.761-5.474,7.29-12.428,1.426-9.558-5.136L25.394,125.4l.96-7.977L29.494,112l4.355-2.586Z" transform="translate(0 -20.158)" fill="#195750"/>
+      <path id="Pfad_7" data-name="Pfad 7" d="M54.516,46.732,55.369,26.8a8.7,8.7,0,1,0-17.391,0l-.853,19.932Z" transform="translate(-3.354 -0.158)" fill="#56ffeb"/>
+      <path id="Pfad_8" data-name="Pfad 8" d="M51.16,88.237V26.249a8.7,8.7,0,1,0-17.391,0V88.237a17.071,17.071,0,1,0,17.391,0Z" transform="translate(0)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="3"/>
+      <line id="Linie_82" data-name="Linie 82" x2="9.389" transform="translate(33.849 46.575)" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+      <line id="Linie_83" data-name="Linie 83" x2="9.389" transform="translate(33.849 61.085)" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+      <line id="Linie_84" data-name="Linie 84" x2="5.975" transform="translate(33.849 39.746)" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+      <line id="Linie_85" data-name="Linie 85" x2="5.975" transform="translate(33.849 53.688)" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+      <line id="Linie_86" data-name="Linie 86" x2="5.975" transform="translate(33.849 67.913)" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Stimmung</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card-header>
+        <ion-card-title>Deine Stimmung</ion-card-title>
+        <ion-card-subtitle>{{questionService.moodQuestions.length}} Fragen zu Deiner Stimmung</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card *ngFor="let q of questionService.moodQuestions">
+        <ion-card-header>
+            <ion-card-subtitle style="text-align: center">{{q.question}}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+            <slider [emoji]="q.emoji" [value]="q.value" (valueChange)="questionService.setValue(q.id, $event)"></slider>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card-header>
+        <ion-card-title>Deine Aktivität</ion-card-title>
+        <ion-card-subtitle>{{questionService.healthQuestions.length}} Fragen zu Deiner Aktivität</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card *ngFor="let q of questionService.healthQuestions">
+        <ion-card-header>
+            <ion-card-subtitle style="text-align: center">{{q.question}}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+            <slider [emoji]="q.emoji" [value]="q.value" (valueChange)="questionService.setValue(q.id, $event)" [max]="20" [step]="0.25">
+                <label *ngIf="q.value > 0">{{q.value | timePipe}}&nbsp;h</label>
+                <label *ngIf="q.value <= 0">-</label>
+            </slider>
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>

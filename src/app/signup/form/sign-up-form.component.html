@@ -1,0 +1,116 @@
+<ion-header>
+    <ion-header>
+        <ion-toolbar>
+            <ion-buttons slot="start">
+                <ion-menu-button></ion-menu-button>
+            </ion-buttons>
+            <ion-title>Wie Geht's?</ion-title>
+        </ion-toolbar>
+    </ion-header>
+</ion-header>
+
+<ion-content>
+    <form (ngSubmit)="sendSignUp()">
+
+        <ion-item-group>
+            <ion-item>
+                <ion-text class="form-header">
+                    Um deine Stimmung auswerten zu können, benötigen
+                    wir ein paar wenige Angaben von dir.
+                </ion-text>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Geschlecht</ion-label>
+                <ion-select (ionChange)="signUpData.gender = $event.detail.value" placeholder="Bitte wählen"
+                            interface="popover">^
+                    <ion-select-option value="FEMALE">Weiblich</ion-select-option>
+                    <ion-select-option value="MALE">Männlich</ion-select-option>
+                    <ion-select-option value="DIVERS">‍Divers</ion-select-option>
+                    <ion-select-option value="NONE">Keine Angabe</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Personen im Haushalt</ion-label>
+                <ion-select (ionChange)="signUpData.householdSize = $event.detail.value" placeholder="Bitte wählen"
+                            interface="popover">
+                    <ion-select-option [value]="1">Nur ich</ion-select-option>
+                    <ion-select-option [value]="2">Ich + 1</ion-select-option>
+                    <ion-select-option [value]="3">Ich + 2</ion-select-option>
+                    <ion-select-option [value]="4">Ich + 3</ion-select-option>
+                    <ion-select-option [value]="5">Ich + 4</ion-select-option>
+                    <ion-select-option [value]="6">Ich + 5</ion-select-option>
+                    <ion-select-option [value]="7">Ich + 6</ion-select-option>
+                    <ion-select-option [value]="8">Ich + 7</ion-select-option>
+                    <ion-select-option [value]="9">Ich + 8</ion-select-option>
+                    <ion-select-option [value]="10">Ich + 9</ion-select-option>
+                    <ion-select-option [value]="11">Ich + 10</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Hast du Haustiere?</ion-label>
+                <ion-select (ionChange)="signUpData.pet = $event.detail.value" placeholder="Bitte wählen"
+                            interface="popover">
+                    <ion-select-option [value]="true">Ja</ion-select-option>
+                    <ion-select-option [value]="false">Nein</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="stacked">
+                    In welchem Jahr bist du geboren?
+                </ion-label>
+
+                <ion-input
+                        type="string"
+                        inputmode="numeric"
+                        name="yearOfBirth"
+                        placeholder="JJJJ"
+                        [maxlength]="4"
+                        [minlength]="4"
+                        [(ngModel)]="signUpData.yearOfBirth"
+                >
+                </ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">
+                    Wie lauten die ersten 3 Ziffern deiner PLZ?<br/>
+                </ion-label>
+
+                <ion-input
+                        type="string"
+                        name="plz"
+                        inputmode="numeric"
+                        placeholder="123"
+                        [maxlength]="3"
+                        [minlength]="3"
+                        [(ngModel)]="signUpData.plz"
+                >
+                </ion-input>
+            </ion-item>
+
+
+            <ion-item>
+                <ion-label style="white-space: normal; font-size: 0.8rem">
+                    Ich habe die <a href="javascript:void(0)" (click)="showPrivacyLayer()">Datenschutzerklärung</a>
+                    gelesen und akzeptiere sie.
+                </ion-label>
+
+                <ion-checkbox #cb [checked]="false"></ion-checkbox>
+            </ion-item>
+
+        </ion-item-group>
+
+        <ion-grid>
+            <ion-row class="button">
+                <ion-col size="12">
+                    <ion-button type="submit" shape="round" [disabled]="!cb.checked">weiter</ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+    </form>
+</ion-content>
