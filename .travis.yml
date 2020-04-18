@@ -1,6 +1,15 @@
-language: node_js
-node_js:
-  - 10
+matrix:
+  include:
+    - language: node_js
+      node_js:
+        - 10
+      script:
+        - npm run build
 
-script:
-  - npm run build
+    - language: android
+      dist: trusty
+      android:
+        components:
+          - android-29
+      before_script:
+        - cd android
