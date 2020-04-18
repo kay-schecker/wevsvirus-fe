@@ -6,9 +6,8 @@ before_install:
 
 script:
   - npm install
-  - npm install @capacitor/core @capacitor/cli
   - npm run build
-  - npm cap copy android
+  - npx cap copy android
   - cd android
 
 matrix:
