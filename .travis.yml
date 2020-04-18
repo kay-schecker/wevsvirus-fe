@@ -5,6 +5,7 @@ before_install:
   - nvm install 10
 
 script:
+  - npm install
   - npm run build
   - npm cap copy android
   - cd android
