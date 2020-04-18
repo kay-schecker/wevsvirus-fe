@@ -9,6 +9,7 @@ script:
   - npm run build
   - npx cap copy android
   - cd android
+  - ./gradlew build connectedCheck
 
 matrix:
   include:
