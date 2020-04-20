@@ -18,3 +18,5 @@ matrix:
       android:
         components:
           - android-29
+        licenses:
+          - android-sdk-license-.+
