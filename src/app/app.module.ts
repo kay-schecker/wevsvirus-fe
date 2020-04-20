@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouteReuseStrategy} from '@angular/router';
 
-import {IonicModule, IonicRouteStrategy} from '@ionic/angular';
+import {IonicModule, IonicRouteStrategy, Platform} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 
@@ -15,7 +15,7 @@ import {distinctUntilChanged, map, skip} from 'rxjs/operators';
 import {NotificationService} from './services/notification.service';
 import {isEqual} from 'lodash';
 import {ModalModule} from './modal/modal.module';
-import {Plugins} from '@capacitor/core';
+import * as moment from 'moment';
 
 @NgModule({
     declarations: [AppComponent],
@@ -38,9 +38,11 @@ import {Plugins} from '@capacitor/core';
 export class AppModule {
 
     constructor(
+        private readonly platform: Platform,
         private readonly settingsService: SettingsService,
         private readonly notificationService: NotificationService,
     ) {
+
         settingsService.settings$
             .pipe(
                 skip(1), //
@@ -53,17 +55,27 @@ export class AppModule {
 
                 if (enabled) {
 
-                    await this.notificationService.schedule([{
-                        title: 'Bleib am Ball',
-                        body: 'Hey, wie geht\'s dir heute denn eigentlich? Stimmung und Aktivität schon erfasst?',
-                        id: 999,
-                        schedule: {
-                            // every: 'day',
-                            on: {hour: time.hour, minute: time.minute},
-                            // count: 999,
-                            // repeats: true,
-                        },
-                    }]);
+                    try {
+
+                        await this.notificationService.schedule([{
+                            title: 'Bleib am Ball',
+                            body: 'Hey, wie geht\'s dir heute denn eigentlich? Stimmung und Aktivität schon erfasst?',
+                            id: 999,
+                            schedule: {
+                                every: 'day',
+                                on: {hour: time.hour, minute: time.minute},
+                            },
+                        }]);
+
+                    } catch (e) {
+                        alert(e.message || e);
+                    }
+
+                    alert(moment()
+                        .set('hour', time.hour)
+                        .set('minute', time.minute)
+                        .set('second', 0)
+                        .toDate().toISOString());
                 }
             });
 
