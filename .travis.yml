@@ -1,6 +1,3 @@
-notifications:
-  email: false
-
 before_install:
   - nvm install 10
   - yes | sdkmanager "platforms;android-28"
@@ -10,7 +7,7 @@ script:
   - npm run build
   - npx cap sync android
   - cd android
-  - ./gradlew build
+  - ./gradlew assemble
 
 matrix:
   include:
@@ -19,5 +16,3 @@ matrix:
       android:
         components:
           - android-29
-        licenses:
-          - android-sdk-license-.+
