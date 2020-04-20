@@ -8,6 +8,7 @@ script:
   - npm install
   - npm run build
   - npx cap copy android
+  - npx cap sync
   - cd android
   - ./gradlew build connectedCheck
 
