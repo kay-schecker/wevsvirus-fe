@@ -110,9 +110,10 @@ export class QuestionService {
     }
 
     public async setValue(id: string, value: number) {
+        console.log('SET VALUE', id, value);
         this.questions[id].value = value;
-        await this.storeValue(id, value);
         this.valueChanges$.next({id, value});
+        await this.storeValue(id, value);
     }
 
     private async storeValue(id: string, value: number) {
@@ -151,19 +152,24 @@ export class QuestionService {
     ) {
         this.onSave$ = this.valueChanges$.pipe(
             debounceTime(150),
-        ).pipe(switchMap(async () => {
-            await this.api.postQuestionnaire({
-                userId: this.userService.user.id,
-                responseDate: moment().format('YYYY-MM-DD'),
-                healthResponses: this.healthQuestions.map((q) => ({
-                    questionId: q.id,
-                    response: q.value,
-                })),
-                moodResponses: this.moodQuestions.map((q) => ({
-                    questionId: q.id,
-                    response: q.value,
-                })),
-            });
-        }));
+            switchMap(async () => {
+                await this.api.postQuestionnaire({
+                    userId: this.userService.user.id,
+                    responseDate: moment().format('YYYY-MM-DD'),
+                    healthResponses: this.healthQuestions.map((q) => ({
+                        questionId: q.id,
+                        response: q.value,
+                    })),
+                    moodResponses: this.moodQuestions.map((q) => ({
+                        questionId: q.id,
+                        response: q.value,
+                    })),
+                });
+            }),
+        );
+
+        this.onSave$.subscribe(() => {
+            console.log('SAVED');
+        });
     }
 }
