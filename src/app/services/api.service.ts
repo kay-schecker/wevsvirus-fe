@@ -6,8 +6,7 @@ import {Question} from './api/question';
 @Injectable({providedIn: 'root'})
 export class ApiService {
 
-    // private readonly baseUrl = 'http://stimmungsbarometer-be.westeurope.azurecontainer.io:8080'
-    private readonly baseUrl = 'https://stimmungsbarometer-be.azurewebsites.net';
+    private readonly baseUrl = 'https://www.wiegehts.app';
 
     constructor(
         private readonly http: HttpClient,

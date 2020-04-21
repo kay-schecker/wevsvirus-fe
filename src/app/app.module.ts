@@ -15,7 +15,6 @@ import {distinctUntilChanged, map, skip} from 'rxjs/operators';
 import {NotificationService} from './services/notification.service';
 import {isEqual} from 'lodash';
 import {ModalModule} from './modal/modal.module';
-import * as moment from 'moment';
 
 @NgModule({
     declarations: [AppComponent],
