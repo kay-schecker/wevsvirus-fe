@@ -11,5 +11,5 @@ xcuserdata
 # Cordova plugins for Capacitor
 capacitor-cordova-ios-plugins
 
-App/**/AppIcon.appiconset
-App/**/Splash.appiconset
+App/App/Assets.xcassets
+App/App/Splash.xcassets
