@@ -10,7 +10,7 @@
     "ios:watch": "ionic cap run ios --livereload-url=http://192.168.178.20:4200",
     "android": "ionic cap run android",
     "android:watch": "ionic cap run android --livereload-url=http://192.168.178.20:4200",
-    "build": "ng build",
+    "build": "ng build && capacitor-resources -p ios,android",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -46,6 +46,7 @@
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
+    "capacitor-resources": "^2.0.3",
     "chart.js": "^2.9.3",
     "codelyzer": "^5.0.0",
     "jasmine-core": "~3.4.0",

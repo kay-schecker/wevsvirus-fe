@@ -31,6 +31,3 @@ npm-debug.log*
 /www
 /resources/android
 /resources/ios
-/ios/**/AppIcon.appiconset
-/ios/**/Splash.appiconset
-
