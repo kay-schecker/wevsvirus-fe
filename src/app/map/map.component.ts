@@ -30,7 +30,7 @@ export class MapComponent {
     ) {
     }
 
-    private static readonly daysToShow = 7;
+    private static readonly daysToShow = 6;
 
     @ViewChild('slider', null)
     slider: IonSlides;
@@ -40,7 +40,7 @@ export class MapComponent {
         .reduce((dates) => [
             ...dates,
             dates[dates.length - 1].clone().subtract(1, 'day'),
-        ], [moment()])
+        ], [moment().subtract(1, 'day')])
         .reverse();
 
     private readonly svg$ = this.http
