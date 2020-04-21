@@ -29,3 +29,8 @@ npm-debug.log*
 /platforms
 /plugins
 /www
+/resources/android
+/resources/ios
+/ios/**/AppIcon.appiconset
+/ios/**/Splash.appiconset
+
