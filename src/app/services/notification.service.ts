@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {LocalNotification, Plugins} from '@capacitor/core';
 import {ApiService} from './api.service';
 import {AlertController} from '@ionic/angular';
+import {SettingsService} from './settings.service';
 
 const {LocalNotifications} = Plugins;
 
@@ -18,7 +19,7 @@ export class NotificationService {
         } catch (e) {
             return undefined;
         }
-    };
+    }
 
     private getPending = () => LocalNotifications.getPending();
 
@@ -49,13 +50,50 @@ export class NotificationService {
 
     }
 
-    public async schedule(notifications: LocalNotification[]): Promise<LocalNotification[]> {
+    public async schedule(notifications: LocalNotification[]): Promise<boolean> {
+        const granted = await this.requestPermission();
+
+        if (!granted) {
+            (await this.alertController.create({
+                header: 'Ups ...',
+                message: [
+                    'Leider konnte die Erinnerung nicht aktiviert werden, da wir Dir keine Push-Benachrichtigungen senden dürfen.',
+                    'Bitte erlaube dies in den Systemeinstellungen.',
+                ].join(' '),
+                buttons: [{
+                    text: 'Okay',
+                }],
+            })).present();
+
+            return false;
+        }
+
         try {
             await LocalNotifications.schedule({notifications});
         } catch (e) {
-            alert(e.message || e);
+            (await this.alertController.create({
+                header: 'Ups ...',
+                message: [
+                    'Leider konnte die Erinnerung nicht aktiviert werden. Fehler:',
+                    e.message || e,
+                ].join(' '),
+                buttons: [{
+                    text: 'Okay',
+                }],
+            })).present();
         }
-        return notifications;
+
+        return true;
+    }
+
+    public async requestPermission(): Promise<boolean> {
+        const {granted} = await LocalNotifications.requestPermission();
+
+        if (!granted) {
+            this.settingsService.set('reminderPushNotification.enabled', false);
+        }
+
+        return granted;
     }
 
     public async cancelAll(): Promise<void> {
@@ -69,7 +107,9 @@ export class NotificationService {
     constructor(
         private readonly api: ApiService,
         private readonly alertController: AlertController,
+        private readonly settingsService: SettingsService,
     ) {
+
     }
 
 }

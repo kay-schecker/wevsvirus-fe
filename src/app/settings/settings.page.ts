@@ -5,6 +5,7 @@ import {UserService} from '../services/user.service';
 import {Plugins} from '@capacitor/core';
 import {SettingsService} from '../services/settings.service';
 import {map} from 'rxjs/operators';
+import {NotificationService} from '../services/notification.service';
 
 const {Clipboard} = Plugins;
 
@@ -40,8 +41,10 @@ export class SettingsPage {
     constructor(
         private readonly userService: UserService,
         private readonly settingsService: SettingsService,
+        private readonly notificationService: NotificationService,
         private readonly toastController: ToastController,
     ) {
+
     }
 
     private async copyUserIdToClipboard(userId: string) {

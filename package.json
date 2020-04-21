@@ -6,6 +6,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --host 0.0.0.0",
+    "ios": "ionic cap run ios",
+    "ios:watch": "ionic cap run ios --livereload-url=http://192.168.178.20:4200",
     "android": "ionic cap run android",
     "android:watch": "ionic cap run android --livereload-url=http://192.168.178.20:4200",
     "build": "ng build",

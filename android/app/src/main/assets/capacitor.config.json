@@ -1,5 +1,5 @@
 {
-  "appId": "io.ionic.starter",
+  "appId": "app.wiegehts",
   "appName": "wiegehts",
   "bundledWebRuntime": false,
   "npmClient": "npm",

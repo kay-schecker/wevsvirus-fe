@@ -60,7 +60,7 @@ export class AppModule {
                         await this.notificationService.schedule([{
                             title: 'Bleib am Ball',
                             body: 'Hey, wie geht\'s dir heute denn eigentlich? Stimmung und Aktivität schon erfasst?',
-                            id: 999,
+                            id: 1,
                             schedule: {
                                 every: 'day',
                                 on: {hour: time.hour, minute: time.minute},
@@ -71,11 +71,6 @@ export class AppModule {
                         alert(e.message || e);
                     }
 
-                    alert(moment()
-                        .set('hour', time.hour)
-                        .set('minute', time.minute)
-                        .set('second', 0)
-                        .toDate().toISOString());
                 }
             });
 
