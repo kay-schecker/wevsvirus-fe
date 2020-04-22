@@ -12,7 +12,6 @@ import android.media.AudioAttributes;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.format.DateUtils;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -29,14 +28,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 
 /**
  * Contains implementations for all notification actions
- * node_modules/@capacitor/android/capacitor/src/main/java/com/getcapacitor/plugin/notification/LocalNotificationManager.java
  */
 public class LocalNotificationManager {
 
@@ -65,12 +62,12 @@ public class LocalNotificationManager {
    */
   public JSObject handleNotificationActionPerformed(Intent data, NotificationStorage notificationStorage) {
     Log.d(LogUtils.getPluginTag("LN"), "LocalNotification received: " + data.getDataString());
-    int notificationId = data.getIntExtra(com.getcapacitor.plugin.notification.LocalNotificationManager.NOTIFICATION_INTENT_KEY, Integer.MIN_VALUE);
+    int notificationId = data.getIntExtra(LocalNotificationManager.NOTIFICATION_INTENT_KEY, Integer.MIN_VALUE);
     if (notificationId == Integer.MIN_VALUE) {
       Log.d(LogUtils.getPluginTag("LN"), "Activity started without notification attached");
       return null;
     }
-    boolean isRemovable = data.getBooleanExtra(com.getcapacitor.plugin.notification.LocalNotificationManager.NOTIFICATION_IS_REMOVABLE_KEY, true);
+    boolean isRemovable = data.getBooleanExtra(LocalNotificationManager.NOTIFICATION_IS_REMOVABLE_KEY, true);
     if (isRemovable) {
       notificationStorage.deleteNotification(Integer.toString(notificationId));
     }
@@ -78,17 +75,17 @@ public class LocalNotificationManager {
 
     Bundle results = RemoteInput.getResultsFromIntent(data);
     if (results != null) {
-      CharSequence input = results.getCharSequence(com.getcapacitor.plugin.notification.LocalNotificationManager.REMOTE_INPUT_KEY);
+      CharSequence input = results.getCharSequence(LocalNotificationManager.REMOTE_INPUT_KEY);
       dataJson.put("inputValue", input.toString());
     }
-    String menuAction = data.getStringExtra(com.getcapacitor.plugin.notification.LocalNotificationManager.ACTION_INTENT_KEY);
+    String menuAction = data.getStringExtra(LocalNotificationManager.ACTION_INTENT_KEY);
     if (menuAction != DEFAULT_PRESS_ACTION) {
       dismissVisibleNotification(notificationId);
     }
     dataJson.put("actionId", menuAction);
     JSONObject request = null;
     try {
-      String notificationJsonString = data.getStringExtra(com.getcapacitor.plugin.notification.LocalNotificationManager.NOTIFICATION_OBJ_INTENT_KEY);
+      String notificationJsonString = data.getStringExtra(LocalNotificationManager.NOTIFICATION_OBJ_INTENT_KEY);
       if (notificationJsonString != null) {
         request = new JSObject(notificationJsonString);
       }
@@ -311,39 +308,30 @@ public class LocalNotificationManager {
       return;
     }
 
-    // Cron like scheduler
-    String every = schedule.getEvery();
-    DateMatch on = schedule.getOn();
-
-    if (on != null) {
-      notificationIntent.putExtra(TimedNotificationPublisher.CRON_KEY, on.toMatchString());
-      pendingIntent = PendingIntent.getBroadcast(context, request.getId(), notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-
-      if (every != null) {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(new Date(on.nextTrigger(new Date())));
-        cal.set(Calendar.SECOND, 0);
-        cal.set(Calendar.MILLISECOND, 0);
-        // alarmManager.setRepeating(AlarmManager.RTC, cal.getTimeInMillis() - DateUtils.DAY_IN_MILLIS, DateUtils.DAY_IN_MILLIS, pendingIntent);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-        // alarmManager.setExact(AlarmManager.RTC, cal.getTimeInMillis(), pendingIntent);
-      } else {
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP, on.nextTrigger(new Date()), pendingIntent);
-      }
-
-      return;
-    }
-
     // Schedule at specific intervals
+    String every = schedule.getEvery();
     if (every != null) {
       Long everyInterval = schedule.getEveryInterval();
       if (everyInterval != null) {
-        long startTime = new Date().getTime() + everyInterval;
-        alarmManager.setRepeating(AlarmManager.RTC, startTime, everyInterval, pendingIntent);
+        DateMatch on = schedule.getOn();
+        long startTime;
+        if (on != null) {
+          startTime = on.nextTrigger(new Date());
+        } else {
+          startTime = new Date().getTime() + everyInterval;
+        }
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, startTime, everyInterval, pendingIntent);
       }
       return;
     }
 
+    // Cron like scheduler
+    DateMatch on = schedule.getOn();
+    if (on != null) {
+      notificationIntent.putExtra(TimedNotificationPublisher.CRON_KEY, on.toMatchString());
+      pendingIntent = PendingIntent.getBroadcast(context, request.getId(), notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+      alarmManager.setExact(AlarmManager.RTC, on.nextTrigger(new Date()), pendingIntent);
+    }
   }
 
   public void cancel(PluginCall call) {
