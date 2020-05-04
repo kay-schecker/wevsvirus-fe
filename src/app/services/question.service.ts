@@ -43,7 +43,7 @@ export class QuestionService {
         },
         'o4uyZ9so3oiuAzspbH3YPf': {
             question: 'Wie gestresst fühlst Du Dich?',
-            emoji: '🤯',
+            emoji: '😵',
             value: 0,
             color: '#97bbcd',
         },
