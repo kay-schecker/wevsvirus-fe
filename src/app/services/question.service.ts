@@ -60,7 +60,7 @@ export class QuestionService {
             color: '#ff5e80',
         },
         'rPjhtwjTyfAQ433jVDHSvU': {
-            question: 'Wie lange hast Du Dich heute über Corona informiert (Nachrichten, Social Media, TV...)',
+            question: 'Wie lange hast Du Dich heute über die aktuelle Lage informiert (Nachrichten, Social Media, TV...)',
             emoji: '📺',
             value: 0,
             color: '#ffce56',
